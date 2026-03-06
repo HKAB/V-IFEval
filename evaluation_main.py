@@ -65,10 +65,11 @@ def read_prompt_list(input_jsonl_filename):
   """Read inputs from jsonl."""
   inputs = []
   with open(input_jsonl_filename, "r", encoding='utf-8') as f:
-    for l in f:
+    for idx, l in enumerate(f):
       example = json.loads(l)
       inputs.append(
-          InputExample(key=example["key"],
+          InputExample(key=idx,
+                        # key=example["key"],
                        instruction_id_list=example["instruction_id_list"],
                        prompt=example["prompt"],
                        kwargs=example["kwargs"]))
@@ -93,7 +94,8 @@ def write_outputs(output_jsonl_filename, outputs):
                   for attr_name in [
                       name for name in dir(o) if not name.startswith("_")
                   ]
-              }
+              },
+              ensure_ascii=True,
           )
       )
       f.write("\n")

@@ -14,9 +14,9 @@
 
 #!/bin/bash
 
-python3 -m instruction_following_eval.evaluation_main \
-  --input_data=./instruction_following_eval/data/input_data.jsonl \
-  --input_response_data=./instruction_following_eval/data/input_response_data_gpt4_20231107_145030.jsonl \
-  --output_dir=./instruction_following_eval/data/
+python3 -m evaluation_main \
+  --input_data=/home/truongnp5/Desktop/dpo/M-IFEval/data/vi_input_data_verified.jsonl \
+  --input_response_data=/home/truongnp5/Desktop/dpo/M-IFEval/data/vi_input_response_data_Sen-1.7B-1.4.3-vi-en-dpo-005_v3-2025-12-19.jsonl \
+  --output_dir=/home/truongnp5/Desktop/dpo/M-IFEval/evaluation
 
 exit 0
