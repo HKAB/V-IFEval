@@ -14,9 +14,17 @@
 
 #!/bin/bash
 
-python3 -m evaluation_main \
-  --input_data=/home/truongnp5/Desktop/dpo/M-IFEval/data/vi_input_data_verified.jsonl \
-  --input_response_data=/home/truongnp5/Desktop/dpo/M-IFEval/data/vi_input_response_data_Sen-1.7B-1.4.3-vi-en-dpo-005_v3-2025-12-19.jsonl \
-  --output_dir=/home/truongnp5/Desktop/dpo/M-IFEval/evaluation
+python get_responses_vllm.py \
+  --base_url "http://localhost:8002/v1" \
+  --api_key "YOUR_API_KEY_HERE" \
+  --model "meta-llama/Llama-2-7b-chat-hf" \
+  --input_file "data/vi_input_data_verified.jsonl" \
+  --output_folder "data" \
+  --workers 20
+
+# python3 -m evaluation_main \
+#   --input_data=data/vi_input_data_verified.jsonl \
+#   --input_response_data=data/vi_input_response_data_Sen-1.7B-1.4.3-vi-en-dpo-005_v3-2025-12-19.jsonl \
+#   --output_dir=data/evaluation
 
 exit 0
